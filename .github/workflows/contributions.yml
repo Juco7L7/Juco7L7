@@ -1,0 +1,20 @@
+name: Contributions graph
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 contributions.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          git add contributions.svg
+          git diff --cached --quiet && exit 0
+          git -c user.name=Juco7L7 -c user.email= commit -q -m "Contributions graph"
+          git push

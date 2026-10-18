@@ -1,6 +1,14 @@
 <p align="center">
-  <img src="banner.gif" alt="Juco7L7: C, OS dev, music production, hardware hacking" width="100%">
+  <img src="banner.gif" alt="Juco -L-: C, OS dev, music production, hardware hacking" width="100%">
 </p>
+
+<p align="center">
+  <a href="https://github.com/snapos-distro/SnapOS"><img src="card-SnapOS.svg" alt="SnapOS" width="32%"></a>
+  <a href="https://github.com/snapos-distro/snapos-updates"><img src="card-snapos-updates.svg" alt="snapos-updates" width="32%"></a>
+  <a href="https://github.com/snapos-distro/snapos-distro.github.io"><img src="card-snapos-distro.svg" alt="snapos-distro.github.io" width="32%"></a>
+</p>
+
+<p align="center"><img src="contributions.svg" alt="Contributions in the last year" width="100%"></p>
 
 ## 💻 Programming languages
 
@@ -22,7 +30,7 @@
 ## 🚀 What I am working on
 
 <table>
-  <tr><th colspan="3" align="left"><img src="https://raw.githubusercontent.com/snapos-distro/SnapOS/main/branding/snapos-logo.png" width="22" align="center"> SnapOS — <a href="https://snapos-distro.github.io">snapos-distro.github.io</a></th></tr>
+  <tr><th colspan="3" align="left"><a href="https://snapos-distro.github.io"><img src="snapos-head.svg" alt="SnapOS, snapos-distro.github.io" height="34"></a></th></tr>
   <tr><th align="left">Project</th><th align="left">About</th><th align="left">Status</th></tr>
   <tr>
     <td>📁 <a href="https://github.com/snapos-distro/SnapOS"><b>SnapOS</b></a></td>
