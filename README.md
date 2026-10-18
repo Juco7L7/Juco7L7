@@ -8,10 +8,6 @@
   <a href="https://github.com/snapos-distro/snapos-distro.github.io"><img src="card-snapos-distro.svg" alt="snapos-distro.github.io" width="32%"></a>
 </p>
 
-<p align="center"><img src="contributions.svg" alt="Contributions in the last year" width="100%"></p>
-
-<p align="center"><img src="activity.svg" alt="Contribution activity" width="100%"></p>
-
 ## 💻 Programming languages
 
 <img src="languages.svg" alt="C, Nix, Bash, JavaScript, Ruby, HTML, CSS, Assembly">
@@ -55,3 +51,9 @@
     <td><img alt="website" src="https://img.shields.io/website?url=https%3A%2F%2Fsnapos-distro.github.io&label=&up_message=online&up_color=2ea44f"></td>
   </tr>
 </table>
+
+## 📈 Contributions
+
+<p align="center"><img src="contributions.svg" alt="Contributions in the last year" width="100%"></p>
+
+<p align="center"><img src="activity.svg" alt="Contribution activity" width="100%"></p>
