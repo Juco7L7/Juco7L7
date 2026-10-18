@@ -14,7 +14,7 @@
 
 ## 🧰 Tools
 
-<img src="tools.svg" alt="Linux, Ubuntu, Debian, Arch, Git, GitHub, GitHub Actions, GTK, Vim, Neovim, VS Code, Markdown, Regex, CMake, Raspberry Pi, Arduino, NixOS, QEMU, GNU, Wayland, Hyprland, KDE, Xfce, Flatpak, Firefox, ESP32, FFmpeg, Cairo">
+<img src="tools.svg" alt="Linux, NixOS, Gentoo, Source Mage, Ubuntu, GNU, QEMU, Flatpak, Git, GitHub, GitHub Actions, Vim, Neovim, VS Code, Markdown, Regex, Make, CMake, GTK, Cairo, Wayland, Hyprland, KDE, Xfce, GNOME, Firefox, Steam, Wine, Raspberry Pi, Arduino, ESP32, PlatformIO, ESPHome, KiCad, FL Studio, Audacity, FFmpeg, OBS Studio">
 
 ## ⭐ Favorites
 
