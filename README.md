@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+  15y · I love C and OS dev 🐢<br>
+  Building <a href="https://snapos-distro.github.io">SnapOS</a>, the easy road to NixOS<br>
+  Music production, soldering and hardware hacking
+</p>
+
+<p align="center">
   <a href="https://github.com/snapos-distro/SnapOS"><img src="card-SnapOS.svg" alt="SnapOS" width="32%"></a>
   <a href="https://github.com/snapos-distro/snapos-updates"><img src="card-snapos-updates.svg" alt="snapos-updates" width="32%"></a>
   <a href="https://github.com/snapos-distro/snapos-distro.github.io"><img src="card-snapos-distro.svg" alt="snapos-distro.github.io" width="32%"></a>
