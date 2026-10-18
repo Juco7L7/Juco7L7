@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.gif" alt="Juco -L-: C, OS dev, music production, hardware hacking" width="100%">
+  <img src="banner-fl.gif" alt="Juco -L-: C, OS dev, music production, hardware hacking" width="100%">
 </p>
 
 <p align="center">
@@ -9,6 +9,8 @@
 </p>
 
 <p align="center"><img src="contributions.svg" alt="Contributions in the last year" width="100%"></p>
+
+<p align="center"><img src="activity.svg" alt="Contribution activity" width="100%"></p>
 
 ## 💻 Programming languages
 

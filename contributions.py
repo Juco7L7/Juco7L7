@@ -14,6 +14,7 @@ def api(url, body=None):
 
 q = '{user(login:"%s"){contributionsCollection{contributionCalendar{weeks{contributionDays{date contributionCount weekday}}}}}}' % USER
 weeks = api("https://api.github.com/graphql", {"query": q})["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+per_repo = collections.defaultdict(collections.Counter)
 count = collections.Counter({d["date"]: d["contributionCount"] for w in weeks for d in w["contributionDays"]})
 first = weeks[0]["contributionDays"][0]["date"]
 
@@ -21,7 +22,7 @@ with tempfile.TemporaryDirectory() as tmp:
     for owner in ORGS:
         kind = "orgs" if owner != USER else "users"
         for repo in api(f"https://api.github.com/{kind}/{owner}/repos?type=public&per_page=100"):
-            if repo["private"] or repo["size"] == 0:
+            if repo["private"]:
                 continue
             path = os.path.join(tmp, f"{owner}-{repo['name']}")
             subprocess.run(["git", "clone", "-q", "--bare", "--filter=blob:none", repo["clone_url"], path], check=True)
@@ -29,7 +30,9 @@ with tempfile.TemporaryDirectory() as tmp:
                                   "--grep=^Contributions graph", f"--since={first}", "--format=%H %ad", "--date=short"],
                                  capture_output=True, text=True, check=True).stdout.split("\n")
             for line in set(filter(None, log)):
-                count[line.split()[1]] += 1
+                day = line.split()[1]
+                count[day] += 1
+                per_repo[day[:7]][f"{owner}/{repo['name']}"] += 1
 
 days = [d for w in weeks for d in w["contributionDays"]]
 total = sum(count[d["date"]] for d in days)
@@ -71,3 +74,34 @@ for k, col in enumerate([NONE_COLOR] + GREENS):
 out.append(f'<text x="{lx + 5 * S + 4}" y="{fy}" fill="#8b949e" font-size="12">More</text></svg>')
 open("contributions.svg", "w").write("\n".join(out) + "\n")
 print(total)
+
+# Contribution activity: the last months with commits, one bar per repository, like the profile timeline.
+months = sorted((m for m in per_repo if per_repo[m]), reverse=True)[:3]
+rows, y = [], 20
+for m in months:
+    name = datetime.date.fromisoformat(m + "-01").strftime("%B %Y")
+    repos = per_repo[m].most_common(6)
+    n = sum(per_repo[m].values())
+    rows.append(f'<text x="16" y="{y + 14}" fill="#e6edf3" font-size="14" font-weight="600">{name}</text>')
+    rows.append(f'<line x1="140" y1="{y + 9}" x2="{W - 16}" y2="{y + 9}" stroke="#30363d"/>')
+    y += 40
+    rows.append(f'<circle cx="30" cy="{y - 5}" r="14" fill="#21262d" stroke="#30363d"/>')
+    rows.append(f'<path d="M24 {y - 5}h12M30 {y - 11}v12" stroke="#8b949e" stroke-width="2" fill="none"/>' if False else
+                f'<circle cx="30" cy="{y - 5}" r="4" fill="none" stroke="#8b949e" stroke-width="2"/><path d="M20 {y - 5}h6M34 {y - 5}h6" stroke="#8b949e" stroke-width="2"/>')
+    rows.append(f'<text x="56" y="{y}" fill="#e6edf3" font-size="14">Created {n} commit{"s" * (n != 1)} in {len(per_repo[m])} repositor{"ies" if len(per_repo[m]) != 1 else "y"}</text>')
+    y += 26
+    top = repos[0][1]
+    for repo, c in repos:
+        rows.append(f'<text x="56" y="{y}" fill="#4493f8" font-size="13">{repo}</text>')
+        rows.append(f'<text x="330" y="{y}" fill="#8b949e" font-size="13">{c} commit{"s" * (c != 1)}</text>')
+        bw = max(4, int((W - 16 - 440) * c / top))
+        rows.append(f'<rect x="440" y="{y - 9}" width="{W - 16 - 440}" height="8" rx="4" fill="#21262d"/>')
+        rows.append(f'<rect x="440" y="{y - 9}" width="{bw}" height="8" rx="4" fill="#26a641"/>')
+        y += 24
+    y += 14
+AH = y + 4
+head = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{AH + 34}" viewBox="0 0 {W} {AH + 34}" font-family="{FONT}">',
+        f'<rect x="0.5" y="0.5" width="{W - 1}" height="{AH + 33}" rx="6" fill="#0d1117" stroke="#30363d"/>',
+        f'<text x="16" y="28" fill="#e6edf3" font-size="16">Contribution activity</text>',
+        f'<g transform="translate(0 34)">']
+open("activity.svg", "w").write("\n".join(head + rows + ["</g></svg>"]) + "\n")
