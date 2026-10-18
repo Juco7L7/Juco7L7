@@ -58,4 +58,10 @@
 
 <p align="center"><img src="activity.svg" alt="Contribution activity" width="100%"></p>
 
-<img src="space.svg" alt="" width="1" height="7500">
+<p><img src="space.svg" alt="" width="10" height="1875"></p>
+
+<p><img src="space.svg" alt="" width="10" height="1875"></p>
+
+<p><img src="space.svg" alt="" width="10" height="1875"></p>
+
+<p><img src="space.svg" alt="" width="10" height="1875"></p>
