@@ -52,10 +52,10 @@
   </tr>
 </table>
 
-<img src="space.svg" alt="" width="1" height="1500">
-
 ## 📈 Contributions
 
 <p align="center"><img src="contributions.svg" alt="Contributions in the last year" width="100%"></p>
 
 <p align="center"><img src="activity.svg" alt="Contribution activity" width="100%"></p>
+
+<img src="space.svg" alt="" width="1" height="7500">
